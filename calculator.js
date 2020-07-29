@@ -18,6 +18,38 @@ function getUserInput(){
     
 }
 
+//Type of Calculation 
+function calculateType(calcType){
+    const inputNumber=getUserInput()
+    const initialResult=CurrentResult
+    let operator
+    if(calcType=='ADD'){
+        CurrentResult=CurrentResult+inputNumber
+       operator='+'
+    }
+    else if(calcType=='SUB'){
+        CurrentResult=CurrentResult-inputNumber
+        operator='-'
+    }
+    else if(calcType=='MUL'){
+        CurrentResult=CurrentResult*inputNumber
+        operator='*'
+    }
+    else if(calcType=='DIV'){
+        CurrentResult=CurrentResult/inputNumber
+        operator='/'
+    }
+    else if(calcType=='MOD'){
+        CurrentResult=CurrentResult%inputNumber
+        operator='%'
+    }
+    else{
+        document.getElementById('other').innerHTML="Select correct operation"
+    }
+    displayOutput(operator,initialResult,CurrentResult,inputNumber)
+
+}
+
 //display the calculated result
 function displayOutput(operator, initialResult,calcResult,inputNumber){
     console.log(inputNumber)
@@ -27,47 +59,27 @@ function displayOutput(operator, initialResult,calcResult,inputNumber){
 
 //add functionality
 function add(){
-    alert( 'Add function')
-    const inputNumber=getUserInput()
-    const initialResult=CurrentResult
-    CurrentResult=CurrentResult+inputNumber
-    displayOutput('+',initialResult,CurrentResult,inputNumber)
+    calculateType('ADD')
 }
 
 //subtract functionality
 function sub(){
-    alert( 'Subtract function')
-    inputNumber=parseInt(getUserInput())
-    const initialResult=CurrentResult
-    CurrentResult=CurrentResult-inputNumber
-    displayOutput('-',initialResult,CurrentResult,inputNumber)
+    calculateType('SUB')
 }
 
 //multiplication functionality
 function mul(){
-    alert( 'Multiplication function')
-    inputNumber=parseInt(getUserInput())
-    const initialResult=CurrentResult
-    CurrentResult=CurrentResult*inputNumber
-    displayOutput('*',initialResult,CurrentResult,inputNumber)
+   calculateType('MUL')
 }
 
 //division functionality
 function div(){
-    alert( 'Div function')
-    inputNumber=parseInt(getUserInput())
-    const initialResult=CurrentResult
-    CurrentResult=CurrentResult/inputNumber
-    displayOutput('/',initialResult,CurrentResult,inputNumber)
+    calculateType('DIV')
 }
 
 //modulus functionality
 function mod(){
-    alert( 'Div function')
-    inputNumber=parseInt(getUserInput())
-    const initialResult=CurrentResult
-    CurrentResult=CurrentResult%inputNumber
-    displayOutput('%',initialResult,CurrentResult,inputNumber)
+    calculateType('MOD')
 }
 
 //invoke event listeners
